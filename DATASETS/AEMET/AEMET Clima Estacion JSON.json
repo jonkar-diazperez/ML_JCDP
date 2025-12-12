@@ -1,0 +1,72 @@
+{
+  "unidad_generadora": "Servicio de Redes Especiales y Vigilancia Atmosférica",
+  "periodicidad": "Cada 24h",
+  "descripcion": "Datos horarios (HORA SOLAR VERDADERA) acumulados de radiación  global, directa, difusa e infrarroja, y datos semihorarios  (HORA SOLAR VERDADERA) acumulados de radiación ultravioleta eritemática.Datos diarios acumulados  de radiación global, directa, difusa, ultravioleta eritemática e infrarroja. Datos sometidos a controles automáticos de calidad en tiempo real, no puede garantizarse ls ausencia de errores",
+  "formato": "txt/csv",
+  "copyright": "© AEMET. Autorizado el uso de la información y su reproducción citando a AEMET como autora de la misma.",
+  "notaLegal": "https://www.aemet.es/es/nota_legal",
+  "campos": [
+    {"id":"Estación",
+	"descripcion": "Nombre Estación",
+	"tipo_datos": "string",
+        "requerido": true,
+	"posicion_csv":"1"
+    },
+   {"id":"Indicativo",
+	"descripcion": "Indicativo Climatológico Estación",
+	"tipo_datos": "string",
+    	"requerido": true,
+	"posicion_csv":"2"
+    },
+  { "id": "Tipo",
+        "descripcion": "Variable medida (Global/Difusa/Directa/UV Eritemática/Infrarroja)",
+	"tipo_datos": "string",
+        "requerido": true,
+	"posicion_csv": "3,21,39,57,91"
+  },
+  {"id":"Hora Solar Verdadera GL/DF/DT",
+	"descripcion": "Radiación horaria acumulada entre: (hora indicada -1) y (hora indicada) entre las 5 y las 20 Hora Solar Verdadera. Variables: Global/Difusa/Directa",
+	"tipo_datos": "float",
+	"unidad": "10*kJ/m2",
+    	"requerido": true,
+	"posicion_csv": "4-19,22-37,40-55"
+    },
+	{"id":"Suma GL/DF/DT",
+	"descripcion": "Radiación diaria acumulada. Variables: Global/Difusa/Directa",
+	"tipo_datos": "float",
+	"unidad": "10*kJ/m2",
+    	"requerido": true,
+	"posicion_csv": "20,38,56"
+	
+    },
+	{"id": "Hora Solar Verdadera UVER",
+	"descripcion": "Radiación semihoraria acumulada entre: (hora:minutos indicados - 30 minutos y (hora:minutos indicados) entre las 4:30 y las 20 Hora  Solar Verdadera. Variables: Radiación Ultravioleta Eritemática",
+	"tipo_datos": "float",
+	"unidad": "J/m2",
+    	"requerido": true ,
+	"posicion_csv": "58-89"
+    },
+	{"id": "Suma UVER",
+	"descripcion": "Radiación diaria acumulada. Variables: Radiación Ultravioleta Eritemática",
+	"tipo_datos": "float",
+	"unidad": "J/m2",
+    	"requerido": true,
+	"posicion_csv": "90"
+    },
+	{"id": "Hora Solar Verdadera INFRARROJA",
+	"descripcion": "Radiación horaria acumulada entre (hora indicada -1) y (hora indicada) entre las 1 y las 24 Hora Solar Verdadera. Variables: Radiación Infrarroja",
+	"tipo_datos": "float",
+	"unidad": "10*kJ/m2",
+    	"requerido": true,
+	"posicion_csv": "92-115"
+    },
+	{"id":"Suma IR",
+	"descripcion": "Radiación diaria acumulada. Variables: Radiación Infrarroja",
+	"tipo_datos": "float",
+	"unidad": "10*kJ/m2",
+    	"requerido": true,
+	"posicion_csv": "116"
+    }
+  ]
+
+}
