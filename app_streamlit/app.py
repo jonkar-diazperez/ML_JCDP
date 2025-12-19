@@ -48,7 +48,7 @@ st.write("The current number is ", glo)
 hr = st.number_input("Humedad relativa media mensual (%)",
                       min_value=0.0,value="min",format="%0.2f")
 st.write("The current number is ", hr)
-inso = st.number_input("Media mensual/anual de la insolación diaria (horas)",
+inso = st.number_input("Media mensual de la insolación diaria (horas)",
                       min_value=0,value="min")
 st.write("The current number is ", inso)
 q_med = st.number_input("Presión media mensual (hPa)",
@@ -91,7 +91,7 @@ match indicativo:
 mes_pred = int(mes_pred)
 
 
-if st.button("Entrenar"):
+if st.button("Calcular predicción generación (MWh)"):
     X_app_t = pd.DataFrame({'glo':glo,
                             'hr':hr,
                             'inso':inso,
