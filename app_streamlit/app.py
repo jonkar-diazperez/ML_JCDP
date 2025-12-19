@@ -48,18 +48,28 @@ st.write("The current number is ", glo)
 hr = st.number_input("Humedad relativa media mensual (%)",
                       min_value=0.0,value="min",format="%0.2f")
 st.write("The current number is ", hr)
+inso = st.number_input("Media mensual/anual de la insolación diaria (horas)",
+                      min_value=0,value="min")
+st.write("The current number is ", inso)
 q_med = st.number_input("Presión media mensual (hPa)",
                       min_value=0.0,value="min",format="%0.2f")
 st.write("The current number is ", q_med)
 tm_mes = st.number_input("Temperatura media mensual (ºC)",
                       min_value=0.0,value="min",format="%0.2f")
 st.write("The current number is ", tm_mes)
-e = st.number_input("Tensión de vapor media mensual (décimas de hPa)",
-                      min_value=0.0,value="min",format="%0.2f")
-st.write("The current number is ", e)
-np_100 = st.number_input("Nº de días de precipitación mayor o igual que 10 mm en el mes",
+nt_30 = st.number_input("Nº de días de temperatura máxima mayor o igual que 30 °C",
                       min_value=0,value="min")
-st.write("The current number is ", np_100)
+st.write("The current number is ", nt_30)
+n_des = st.number_input("Nº de días despejados en el mes",
+                      min_value=0,value="min")
+st.write("The current number is ", n_des)
+
+tm_max = st.number_input("Temperatura media de las máximas (ºC)",
+                      min_value=0.0,value="min",format="%0.2f")
+st.write("The current number is ", tm_max)
+p_sol = st.number_input("Porcentaje medio mensual de la insolación diaria (%)",
+                      min_value=0.0,value="min",format="%0.2f")
+st.write("The current number is ", p_sol)
 p_mes = st.number_input("Precipitación total mensual (mm)",
                       min_value=0.0,value="min",format="%0.2f")
 st.write("The current number is ", p_mes)
@@ -84,27 +94,28 @@ mes_pred = int(mes_pred)
 if st.button("Entrenar"):
     X_app_t = pd.DataFrame({'glo':glo,
                             'hr':hr,
-                            'nw_55':10,
+                            'inso':inso,
                             'q_med':q_med,
-                            'tm_min': tm_mes-5,
-                            'ts_min': tm_mes-5,
-                            'nt_30':0,
-                            'np_100':np_100,
-                            'nw_91':0,
-                            'np_001':np_100,
-                            'e':e,
-                            'np_300':0,
+                            #'tm_min': tm_mes-5,
+                            #'ts_min': tm_mes-5,
+                            #'np_100':np_100,
+                            #'nw_91':0,
+                            #'np_001':np_100,
+                            #'e':e,
+                            #'np_300':0,
                             'p_mes':p_mes,
-                            'w_med':25,
-                            'nt_00':0,
-                            'ti_max':tm_mes+5,
+                            'p_sol':p_sol,
                             'tm_mes':tm_mes,
-                            'tm_max':tm_mes+5,
-                            'np_010':np_100,
-                            'Año':2025,
-                            'Mes':mes_pred,
-                            'geo_id':geo_id,
-                            'estacion_cod':estacion_cod
+                            'nt_30':nt_30,
+                            'n_des':n_des,
+                            #'nt_00':0,
+                            'ti_max':tm_max-5,
+                            'tm_max':tm_max,
+                            #'np_010':np_100,
+                            #'Año':2025,
+                            #'Mes':mes_pred,
+                            #'geo_id':geo_id,
+                            #'estacion_cod':estacion_cod
                             },index=[0])
     #y_app_t = eval.pred_XGB(X_app_t)
     filename = '../models/trained_model_XGB.pkl'
